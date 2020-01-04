@@ -55,7 +55,7 @@ class Presensi extends CI_Controller
             'tgl' => set_value('tgl'),
             'nik' => set_value('nik'),
             'konten' => 'presensi/presensi_kelola',
-            'judul' => 'Data Presensi Karyawan',
+            'judul' => 'Data Presensi',
         );
         
         $this->load->view('v_index', $data);
@@ -71,7 +71,7 @@ class Presensi extends CI_Controller
             'tgl' => set_value('tgl'),
             'nik' => set_value('nik'),
             'konten' => 'presensi/presensi_list',
-            'judul' => 'Data Presensi Karyawan',
+            'judul' => 'Data Presensi',
         );
         
         $this->load->view('v_index', $data);
@@ -86,7 +86,22 @@ class Presensi extends CI_Controller
             'tgl' => set_value('tgl'),
             'nik' => set_value('nik'),
             'konten' => 'presensi/presensi_laporan',
-            'judul' => 'Data Presensi Karyawan',
+            'judul' => 'Data Presensi',
+        );
+        
+        $this->load->view('v_index', $data);
+        // $this->load->view('presensi/presensi_laporan');
+    }
+
+    public function import_data(){
+        $data = array(
+            'button' => 'Import',
+            'action' => site_url('presensi/create_action'),
+            'id_gaji' => set_value('id_gaji'),
+            'tgl' => set_value('tgl'),
+            'nik' => set_value('nik'),
+            'konten' => 'presensi/presensi_laporan',
+            'judul' => 'Data Presensi',
         );
         
         $this->load->view('v_index', $data);

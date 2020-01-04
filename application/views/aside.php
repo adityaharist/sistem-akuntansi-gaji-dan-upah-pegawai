@@ -70,6 +70,7 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="presensi/kelola"><i class="fa fa-angle-double-right"></i> Kelola/Input </a></li>
+                                <li><a href="presensi/kelola"><i class="fa fa-angle-double-right"></i> Input Excel </a></li>
                                 <li><a href="presensi/detail_laporan"><i class="fa fa-angle-double-right"></i> Detail </a></li>
                                 <li><a href="presensi/laporan"><i class="fa fa-angle-double-right"></i> Report </a></li>
                                 
