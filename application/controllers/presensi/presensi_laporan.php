@@ -23,14 +23,14 @@
 
 
             <div class="form-group">
-              <label for="user_id" class="col-sm-3 control-label">Nama Pegawai </label>
+              <label for="user_id" class="col-sm-3 control-label">Employee Name </label>
               <div class="col-sm-3">
                 <select name="emp_id" id="user_id" class="form-control">
-                  <option value="0">Pilih satu</option>
-                  <option value="13"><strong>Biplob</option>
-                    <option value="11"><strong>Wali</option>
-                </select>
-              </div>
+                  <option value="0">Select One</option>
+                                    <option value="13"><strong>Biplob</option>
+                                      <option value="11"><strong>Wali</option>
+                                      </select>
+                                  </div>
               </div>
 
 
