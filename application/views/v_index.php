@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Sistem Penggajian Pegawai</title>
+        <title>Sistem Penggajian Karyawan</title>
         <base href="<?php echo base_url() ?>">
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
         <!-- bootstrap 3.0.2 -->
@@ -29,7 +29,7 @@
             <?php include 'aside.php'; ?>
 
             <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">                
+            <aside class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>

@@ -1,6 +1,6 @@
 <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('gaji/create'),'Create', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('gaji/create'),'Tambah Gaji', 'class="btn btn-primary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -14,7 +14,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
                         <span class="input-group-btn">
-                            <?php 
+                            <?php
                                 if ($q <> '')
                                 {
                                     ?>
@@ -43,12 +43,12 @@
             <td><?php echo $gaji->tgl ?></td>
             <td><?php echo $gaji->nik ?></td>
             <td style="text-align:center" width="200px">
-                <?php  
-                echo anchor(site_url('app/slip_gaji/'.$gaji->nik.'/'.$gaji->tgl),'Cetak Slip'); 
-                echo ' | '; 
-                echo anchor(site_url('gaji/update/'.$gaji->id_gaji),'Update'); 
-                echo ' | '; 
-                echo anchor(site_url('gaji/delete/'.$gaji->id_gaji),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
+                <?php
+                echo anchor(site_url('app/slip_gaji/'.$gaji->nik.'/'.$gaji->tgl),'Cetak Slip');
+                echo ' | ';
+                echo anchor(site_url('gaji/update/'.$gaji->id_gaji),'Update');
+                echo ' | ';
+                echo anchor(site_url('gaji/delete/'.$gaji->id_gaji),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
                 ?>
             </td>
         </tr>

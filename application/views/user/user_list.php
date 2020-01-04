@@ -1,6 +1,6 @@
 <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('user/create'),'Create', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('user/create'),'Buat User', 'class="btn btn-primary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -14,7 +14,7 @@
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
                         <span class="input-group-btn">
-                            <?php 
+                            <?php
                                 if ($q <> '')
                                 {
                                     ?>
@@ -43,7 +43,7 @@
             <td><?php echo $user->nama ?></td>
             <td><?php echo $user->username ?></td>
             <td style="text-align:center" width="200px">
-               
+
             </td>
         </tr>
                 <?php
@@ -52,7 +52,7 @@
         </table>
         <div class="row">
             <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+                <a href="#" class="btn btn-primary">Jumlah user : <?php echo $total_rows ?></a>
         </div>
             <div class="col-md-6 text-right">
                 <?php echo $pagination ?>

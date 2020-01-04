@@ -16,7 +16,7 @@ class User extends CI_Controller
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 'user/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 'user/index.html?q=' . urlencode($q);
@@ -40,12 +40,12 @@ class User extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
             'konten' => 'user/user_list',
-            'judul' => 'Manajemen User',
+            'judul' => 'Manajemen User (privilidge ngadmin)',
         );
         $this->load->view('v_index', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->User_model->get_by_id($id);
         if ($row) {
@@ -62,7 +62,7 @@ class User extends CI_Controller
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
@@ -76,8 +76,8 @@ class User extends CI_Controller
 	);
         $this->load->view('v_index', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -95,8 +95,8 @@ class User extends CI_Controller
             redirect(site_url('user'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->User_model->get_by_id($id);
 
@@ -117,8 +117,8 @@ class User extends CI_Controller
             redirect(site_url('user'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -136,8 +136,8 @@ class User extends CI_Controller
             redirect(site_url('user'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->User_model->get_by_id($id);
 
@@ -151,7 +151,7 @@ class User extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
 	$this->form_validation->set_rules('nama', 'nama', 'trim|required');
 	$this->form_validation->set_rules('username', 'username', 'trim|required');

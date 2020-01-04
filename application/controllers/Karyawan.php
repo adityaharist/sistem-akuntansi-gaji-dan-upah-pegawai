@@ -12,11 +12,12 @@ class Karyawan extends CI_Controller
         $this->load->library('form_validation');
     }
 
+    // view : list_karyawan
     public function index()
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 'karyawan/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 'karyawan/index.html?q=' . urlencode($q);
@@ -40,25 +41,25 @@ class Karyawan extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
             'konten' => 'karyawan/karyawan_list',
-            'judul' => 'Data Karyawan',
+            'judul' => 'Data Karyawan (exactly SDM,Mb Hanif)',
         );
         $this->load->view('v_index', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->Karyawan_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'id_karyawan' => $row->id_karyawan,
-		'nik' => $row->nik,
-		'username' => $row->username,
-		'password' => $row->password,
-		'nama' => $row->nama,
-		'alamat' => $row->alamat,
-		'jenis_kelamin' => $row->jenis_kelamin,
-		'id_pekerjaan' => $row->id_pekerjaan,
-	    );
+          		'id_karyawan' => $row->id_karyawan,
+          		'nik' => $row->nik,
+          		'username' => $row->username,
+          		'password' => $row->password,
+          		'nama' => $row->nama,
+          		'alamat' => $row->alamat,
+          		'jenis_kelamin' => $row->jenis_kelamin,
+          		'id_pekerjaan' => $row->id_pekerjaan,
+        	   );
             $this->load->view('karyawan/karyawan_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -66,29 +67,29 @@ class Karyawan extends CI_Controller
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
             'action' => site_url('karyawan/create_action'),
-    	    'id_karyawan' => set_value('id_karyawan'),
-    	    'nik' => set_value('nik'),
-    	    'username' => set_value('username'),
-    	    'password' => set_value('password'),
-    	    'nama' => set_value('nama'),
-    	    'alamat' => set_value('alamat'),
+      	    'id_karyawan' => set_value('id_karyawan'),
+      	    'nik' => set_value('nik'),
+      	    'username' => set_value('username'),
+      	    'password' => set_value('password'),
+      	    'nama' => set_value('nama'),
+      	    'alamat' => set_value('alamat'),
             'jenis_kelamin' => set_value('jenis_kelamin'),
             'agama' => set_value('agama'),
             'pendidikan' => set_value('pendidikan'),
-    	    'asal_sekolah' => set_value('asal_sekolah'),
-    	    'id_pekerjaan' => set_value('id_pekerjaan'),
+      	    'asal_sekolah' => set_value('asal_sekolah'),
+      	    'id_pekerjaan' => set_value('id_pekerjaan'),
             'konten' => 'karyawan/karyawan_form',
             'judul' => 'Data Karyawan',
-	);
-        $this->load->view('v_index', $data);
+          );
+          $this->load->view('v_index', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -96,25 +97,25 @@ class Karyawan extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'nik' => $this->input->post('nik',TRUE),
-		'username' => $this->input->post('username',TRUE),
-		'password' => $this->input->post('password',TRUE),
-		'nama' => $this->input->post('nama',TRUE),
-		'alamat' => $this->input->post('alamat',TRUE),
-        'jenis_kelamin' => $this->input->post('jenis_kelamin',TRUE),
-        'agama' => $this->input->post('agama',TRUE),
-        'pendidikan' => $this->input->post('pendidikan',TRUE),
-		'asal_sekolah' => $this->input->post('asal_sekolah',TRUE),
-		'id_pekerjaan' => $this->input->post('id_pekerjaan',TRUE),
-	    );
+          		'nik' => $this->input->post('nik',TRUE),
+          		'username' => $this->input->post('username',TRUE),
+          		'password' => $this->input->post('password',TRUE),
+          		'nama' => $this->input->post('nama',TRUE),
+          		'alamat' => $this->input->post('alamat',TRUE),
+              'jenis_kelamin' => $this->input->post('jenis_kelamin',TRUE),
+              'agama' => $this->input->post('agama',TRUE),
+              'pendidikan' => $this->input->post('pendidikan',TRUE),
+          		'asal_sekolah' => $this->input->post('asal_sekolah',TRUE),
+          		'id_pekerjaan' => $this->input->post('id_pekerjaan',TRUE),
+            );
 
             $this->Karyawan_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('karyawan'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->Karyawan_model->get_by_id($id);
 
@@ -122,28 +123,28 @@ class Karyawan extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('karyawan/update_action'),
-		'id_karyawan' => set_value('id_karyawan', $row->id_karyawan),
-		'nik' => set_value('nik', $row->nik),
-		'username' => set_value('username', $row->username),
-		'password' => set_value('password', $row->password),
-		'nama' => set_value('nama', $row->nama),
-		'alamat' => set_value('alamat', $row->alamat),
-        'jenis_kelamin' => set_value('jenis_kelamin', $row->jenis_kelamin),
-        'agama' => set_value('agama', $row->agama),
-        'pendidikan' => set_value('pendidikan', $row->pendidikan),
-		'asal_sekolah' => set_value('asal_sekolah', $row->asal_sekolah),
-		'id_pekerjaan' => set_value('id_pekerjaan', $row->id_pekerjaan),
-        'konten' => 'karyawan/karyawan_form',
-            'judul' => 'Data Karyawan',
-	    );
-            $this->load->view('v_index', $data);
+            		'id_karyawan' => set_value('id_karyawan', $row->id_karyawan),
+            		'nik' => set_value('nik', $row->nik),
+            		'username' => set_value('username', $row->username),
+            		'password' => set_value('password', $row->password),
+            		'nama' => set_value('nama', $row->nama),
+            		'alamat' => set_value('alamat', $row->alamat),
+                'jenis_kelamin' => set_value('jenis_kelamin', $row->jenis_kelamin),
+                'agama' => set_value('agama', $row->agama),
+                'pendidikan' => set_value('pendidikan', $row->pendidikan),
+            		'asal_sekolah' => set_value('asal_sekolah', $row->asal_sekolah),
+            		'id_pekerjaan' => set_value('id_pekerjaan', $row->id_pekerjaan),
+                'konten' => 'karyawan/karyawan_form',
+                'judul' => 'Data Karyawan',
+              );
+              $this->load->view('v_index', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('karyawan'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -151,25 +152,25 @@ class Karyawan extends CI_Controller
             $this->update($this->input->post('id_karyawan', TRUE));
         } else {
             $data = array(
-		'nik' => $this->input->post('nik',TRUE),
-		'username' => $this->input->post('username',TRUE),
-		'password' => $this->input->post('password',TRUE),
-		'nama' => $this->input->post('nama',TRUE),
-		'alamat' => $this->input->post('alamat',TRUE),
-        'jenis_kelamin' => $this->input->post('jenis_kelamin',TRUE),
-        'agama' => $this->input->post('agama',TRUE),
-        'pendidikan' => $this->input->post('pendidikan',TRUE),
-		'asal_sekolah' => $this->input->post('asal_sekolah',TRUE),
-		'id_pekerjaan' => $this->input->post('id_pekerjaan',TRUE),
-	    );
+          		'nik' => $this->input->post('nik',TRUE),
+          		'username' => $this->input->post('username',TRUE),
+          		'password' => $this->input->post('password',TRUE),
+          		'nama' => $this->input->post('nama',TRUE),
+          		'alamat' => $this->input->post('alamat',TRUE),
+              'jenis_kelamin' => $this->input->post('jenis_kelamin',TRUE),
+              'agama' => $this->input->post('agama',TRUE),
+              'pendidikan' => $this->input->post('pendidikan',TRUE),
+          		'asal_sekolah' => $this->input->post('asal_sekolah',TRUE),
+          		'id_pekerjaan' => $this->input->post('id_pekerjaan',TRUE),
+            );
 
             $this->Karyawan_model->update($this->input->post('id_karyawan', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('karyawan'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->Karyawan_model->get_by_id($id);
 
@@ -183,7 +184,7 @@ class Karyawan extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
 	$this->form_validation->set_rules('nik', 'nik', 'trim|required');
 	$this->form_validation->set_rules('username', 'username', 'trim|required');

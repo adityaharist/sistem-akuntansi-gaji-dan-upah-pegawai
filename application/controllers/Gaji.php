@@ -16,7 +16,7 @@ class Gaji extends CI_Controller
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 'gaji/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 'gaji/index.html?q=' . urlencode($q);
@@ -40,12 +40,12 @@ class Gaji extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
             'konten' => 'gaji/gaji_list',
-            'judul' => 'Data Gaji Karyawan',
+            'judul' => 'Data Gaji Karyawan (Bu Qonaah)',
         );
         $this->load->view('v_index', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->Gaji_model->get_by_id($id);
         if ($row) {
@@ -61,7 +61,7 @@ class Gaji extends CI_Controller
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
@@ -74,8 +74,8 @@ class Gaji extends CI_Controller
     );
         $this->load->view('v_index', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -92,8 +92,8 @@ class Gaji extends CI_Controller
             redirect(site_url('gaji'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->Gaji_model->get_by_id($id);
 
@@ -113,8 +113,8 @@ class Gaji extends CI_Controller
             redirect(site_url('gaji'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -131,8 +131,8 @@ class Gaji extends CI_Controller
             redirect(site_url('gaji'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->Gaji_model->get_by_id($id);
 
@@ -146,7 +146,7 @@ class Gaji extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
 	$this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
 	$this->form_validation->set_rules('nik', 'nik', 'trim|required');

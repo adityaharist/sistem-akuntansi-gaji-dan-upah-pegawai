@@ -12,12 +12,12 @@
 		<table>
 			<tr>
 				<td>
-					<img src="gambar/logo.png" style="width: 100px; height: 100px;">
+					<img src="gambar/logo_ummgl.png" style="width: 100px; height: 100px;">
 				</td>
 				<td>
 					<center>
-						<h3>PT. Sinar Metrindo Perkasa (SIMETRI)</h3>
-					<h5>Rukan Aries Niaga Blok A1 No 3A dan 3B Jl. Taman Aries no telp (021) 58906959, faks  (021) 58907350.</h5>
+						<h3>Universitas Muhammadiyah Magelang</h3>
+            <h5>Jl. Tidar No.21, Magersari, Kec. Magelang Sel., Kota Magelang, Jawa Tengah 59214</h5>
 					</center>
 				</td>
 			</tr>
@@ -40,7 +40,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<?php 
+			<?php
 			$no = 1;
 			foreach ($rw->result() as $row) {
 			 ?>

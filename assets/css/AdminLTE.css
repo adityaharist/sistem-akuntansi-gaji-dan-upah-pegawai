@@ -2802,17 +2802,3 @@ Component: timeline
 .pace-inactive {
   display: none;
 }
-
-/*tambahan*/
-.slimScrollBar {
-background: none repeat scroll 0 0 #6b58cd !important;
-border-radius: 0;
-display: none;
-height: 702.936px;
-position: absolute;
-right: 1px;
-top: 145px;
-width: 10px!important;
-z-index: 99;
-opacity:0.7!important;
-}

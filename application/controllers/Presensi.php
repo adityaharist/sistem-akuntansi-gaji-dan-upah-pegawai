@@ -1,3 +1,4 @@
+<!-- HTTP -->
 <?php
 
 if (!defined('BASEPATH'))
@@ -8,7 +9,7 @@ class Presensi extends CI_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Gaji_model');
+        $this->load->model('Gaji_model'); //import model presensi
         $this->load->library('form_validation');
     }
 
@@ -16,7 +17,7 @@ class Presensi extends CI_Controller
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 'presensi/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 'presensi/index.html?q=' . urlencode($q);
@@ -40,42 +41,89 @@ class Presensi extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
             'konten' => 'presensi/presensi_list',
-            'judul' => 'Data Presensi',
+            'judul' => 'Data Presensi SDM',
         );
         $this->load->view('v_index', $data);
     }
 
-    public function read($id) 
+    // manage/input/edit presensi
+    public function kelola(){
+        $data = array(
+            'button' => 'Create',
+            'action' => site_url('presensi/create_action'),
+            'id_gaji' => set_value('id_gaji'),
+            'tgl' => set_value('tgl'),
+            'nik' => set_value('nik'),
+            'konten' => 'presensi/presensi_kelola',
+            'judul' => 'Data Presensi Karyawan',
+        );
+        
+        $this->load->view('v_index', $data);
+        // $this->load->view('presensi/presensi_kelola');
+    }
+
+    // 
+    public function detail_laporan(){
+        $data = array(
+            'button' => 'Create',
+            'action' => site_url('presensi/create_action'),
+            'id_gaji' => set_value('id_gaji'),
+            'tgl' => set_value('tgl'),
+            'nik' => set_value('nik'),
+            'konten' => 'presensi/presensi_list',
+            'judul' => 'Data Presensi Karyawan',
+        );
+        
+        $this->load->view('v_index', $data);
+        // $this->load->view('presensi/presensi_list');
+    }
+
+    public function laporan(){
+        $data = array(
+            'button' => 'Create',
+            'action' => site_url('presensi/create_action'),
+            'id_gaji' => set_value('id_gaji'),
+            'tgl' => set_value('tgl'),
+            'nik' => set_value('nik'),
+            'konten' => 'presensi/presensi_laporan',
+            'judul' => 'Data Presensi Karyawan',
+        );
+        
+        $this->load->view('v_index', $data);
+        // $this->load->view('presensi/presensi_laporan');
+    }
+
+    public function read($id)
     {
         $row = $this->Gaji_model->get_by_id($id);
         if ($row) {
             $data = array(
-        'id_gaji' => $row->id_gaji,
-        'tgl' => $row->tgl,
-        'nik' => $row->nik,
-        );
-            $this->load->view('gaji/gaji_read', $data);
+		'id_gaji' => $row->id_gaji,
+		'tgl' => $row->tgl,
+		'nik' => $row->nik,
+	    );
+            $this->load->view('presensi/presensi_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('gaji'));
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
-            'action' => site_url('gaji/create_action'),
-            'id_gaji' => set_value('id_gaji'),
-            'tgl' => set_value('tgl'),
-            'nik' => set_value('nik'),
-            'konten' => 'gaji/gaji_form',
-            'judul' => 'Data Gaji Karyawan',
+            'action' => site_url('presensi/create_action'),
+	    'id_gaji' => set_value('id_gaji'),
+	    'tgl' => set_value('tgl'),
+	    'nik' => set_value('nik'),
+        'konten' => 'presensi/presensi_form',
+            'judul' => 'Data Presensi Karyawan',
     );
         $this->load->view('v_index', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -83,17 +131,17 @@ class Presensi extends CI_Controller
             $this->create();
         } else {
             $data = array(
-        'tgl' => $this->input->post('tgl',TRUE),
-        'nik' => $this->input->post('nik',TRUE),
-        );
+		'tgl' => $this->input->post('tgl',TRUE),
+		'nik' => $this->input->post('nik',TRUE),
+	    );
 
             $this->Gaji_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('gaji'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->Gaji_model->get_by_id($id);
 
@@ -101,20 +149,20 @@ class Presensi extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('gaji/update_action'),
-        'id_gaji' => set_value('id_gaji', $row->id_gaji),
-        'tgl' => set_value('tgl', $row->tgl),
-        'nik' => set_value('nik', $row->nik),
+		'id_gaji' => set_value('id_gaji', $row->id_gaji),
+		'tgl' => set_value('tgl', $row->tgl),
+		'nik' => set_value('nik', $row->nik),
         'konten' => 'gaji/gaji_form',
             'judul' => 'Data Gaji Karyawan',
-        );
+	    );
             $this->load->view('v_index', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('gaji'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -122,17 +170,17 @@ class Presensi extends CI_Controller
             $this->update($this->input->post('id_gaji', TRUE));
         } else {
             $data = array(
-        'tgl' => $this->input->post('tgl',TRUE),
-        'nik' => $this->input->post('nik',TRUE),
-        );
+		'tgl' => $this->input->post('tgl',TRUE),
+		'nik' => $this->input->post('nik',TRUE),
+	    );
 
             $this->Gaji_model->update($this->input->post('id_gaji', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('gaji'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->Gaji_model->get_by_id($id);
 
@@ -146,13 +194,13 @@ class Presensi extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
-    $this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
-    $this->form_validation->set_rules('nik', 'nik', 'trim|required');
+	$this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
+	$this->form_validation->set_rules('nik', 'nik', 'trim|required');
 
-    $this->form_validation->set_rules('id_gaji', 'id_gaji', 'trim');
-    $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+	$this->form_validation->set_rules('id_gaji', 'id_gaji', 'trim');
+	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 
 }

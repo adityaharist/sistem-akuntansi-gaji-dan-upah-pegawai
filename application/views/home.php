@@ -4,11 +4,11 @@
 		<h2>Gaji Karyawan</h2>    </div>
     <table>
 			<tr>
-				
+
 				<td>
 					<center>
 						<h3>Universitas Muhammadiyah Magelang</h3>
-					<h5>Jl. Tidar No.21, Magersari, Kec. Magelang Sel., Kota Magelang, Jawa Tengah 59214</h5>
+            <h5>Jl. Tidar No.21, Magersari, Kec. Magelang Sel., Kota Magelang, Jawa Tengah 59214</h5>
 					</center>
 				</td>
 			</tr>

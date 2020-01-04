@@ -16,7 +16,7 @@ class Pekerjaan extends CI_Controller
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 'pekerjaan/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 'pekerjaan/index.html?q=' . urlencode($q);
@@ -40,12 +40,12 @@ class Pekerjaan extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
             'konten' => 'pekerjaan/pekerjaan_list',
-            'judul' => 'Data Pekerjaan',
+            'judul' => 'Data Pekerjaan (antara SDM atau Keu ?)',
         );
         $this->load->view('v_index', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->Pekerjaan_model->get_by_id($id);
         if ($row) {
@@ -64,7 +64,7 @@ class Pekerjaan extends CI_Controller
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
@@ -81,8 +81,8 @@ class Pekerjaan extends CI_Controller
 	);
         $this->load->view('v_index', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -103,8 +103,8 @@ class Pekerjaan extends CI_Controller
             redirect(site_url('pekerjaan'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->Pekerjaan_model->get_by_id($id);
 
@@ -128,8 +128,8 @@ class Pekerjaan extends CI_Controller
             redirect(site_url('pekerjaan'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -150,8 +150,8 @@ class Pekerjaan extends CI_Controller
             redirect(site_url('pekerjaan'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->Pekerjaan_model->get_by_id($id);
 
@@ -165,7 +165,7 @@ class Pekerjaan extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
 	$this->form_validation->set_rules('pekerjaan', 'pekerjaan', 'trim|required');
 	$this->form_validation->set_rules('gapok', 'gapok', 'trim|required');

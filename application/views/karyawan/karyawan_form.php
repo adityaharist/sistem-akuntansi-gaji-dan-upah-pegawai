@@ -1,4 +1,4 @@
-<form action="<?php echo $action; ?>" method="post">
+    <form action="<?php echo $action; ?>" method="post">
         <div class="form-group">
             <label for="varchar">Nik <?php echo form_error('nik') ?></label>
             <input type="text" class="form-control" name="nik" id="nik" placeholder="Nik" value="<?php echo $nik; ?>" />
@@ -51,7 +51,7 @@
             <!-- <input type="text" class="form-control" name="id_pekerjaan" id="id_pekerjaan" placeholder="Id Pekerjaan" value="<?php echo $id_pekerjaan; ?>" /> -->
             <select name="id_pekerjaan" class="form-control">
                 <option value="<?php echo $id_pekerjaan ?>"><?php echo $id_pekerjaan ?></option>
-                <?php 
+                <?php
                 $sql = $this->db->get('pekerjaan');
                 foreach ($sql->result() as $row) {
                  ?>
@@ -59,7 +59,7 @@
                 <?php } ?>
             </select>
         </div>
-        <input type="hidden" name="id_karyawan" value="<?php echo $id_karyawan; ?>" /> 
-        <button type="submit" class="btn btn-primary"><?php echo $button ?></button> 
+        <input type="hidden" name="id_karyawan" value="<?php echo $id_karyawan; ?>" />
+        <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
         <a href="<?php echo site_url('karyawan') ?>" class="btn btn-default">Cancel</a>
     </form>
