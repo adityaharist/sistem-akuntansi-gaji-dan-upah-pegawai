@@ -12,23 +12,33 @@
                 <!-- Notification Box -->
                 <div class="col-md-12">
                                     </div>
+
+                  <div class="col-lg-12 col-xs-12">
+                    <a class="pull-right btn btn-info btn-xs" style="margin: 2px" href="assets/sample-file/upload.xlsx"><i class="fa fa-file-excel-o"></i> Download Format</a>
+                  </div>
                 <!-- /.Notification Box -->
-                <div class="col-md-12">
-                    <form action="" method="post">
-                        <input type="hidden" name="_token" value="YPsEYDuCOIGn2Ks1309XDo8khM0w6t3uH3HTmgRZ">
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-6">
-                                <div class="input-group margin">
-                                    <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                    <input type="text" name="date" class="form-control" id="datepicker">
-                                    <span class="input-group-btn">
-                                      <button type="submit" class="btn btn-info btn-flat"><i class="icon fa fa-arrow-right"></i>Go </button>
-                                  </span>
+                <div class="row">
+                  <div class="col-lg-4 col-xs-4">
+                      <div class="form-group">
+                        <label for="image">Choose file</label><input type="file" name="userfile" id="userfile" class="form-control filestyle" value="" data-icon="false">
+                      </div>
+                  </div>
+                  <!-- /.Notification Box -->
+                  <div class="col-lg-6 col-xs-6">
+                      <form action="" method="post">
+                          <input type="hidden" name="_token" value="YPsEYDuCOIGn2Ks1309XDo8khM0w6t3uH3HTmgRZ">
+                          <div class="form-group">
+                              <div class="col-sm-offset-3 col-sm-6">
+                                  <div class="input-group margin">
+                                      <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                      <input type="text" name="date" class="form-control" id="datepicker">
+                                </div>
                               </div>
-                            </div>
-                        </div>
-                  </form>
-              </div>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="col-lg-12 col-sm-12"><div class="form-group text-left"><input type="submit" name="importfile" value="Import" id="importfile-id" class="btn btn-primary"></div></div>
+                </div>
               <!-- /. end col -->
           </div>
           <!-- /.box-body -->
